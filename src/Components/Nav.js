@@ -1,13 +1,13 @@
 import React from 'react';
-import { Router, Link } from '@reach/router';
+import { Link } from '@reach/router';
 
 const Nav = () => {
   return (
     <nav>
-      <Link to='/'>
+      <Link to="/">
         <button>Home</button>
       </Link>
-      <Link to='/api/students'>
+      <Link to="/students">
         <button>Students</button>
       </Link>
       <button>Blocks</button>

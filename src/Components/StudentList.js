@@ -1,5 +1,7 @@
 import React from 'react';
 import * as api from './api';
+import { Link } from '@reach/router';
+import { capitalise } from '../utils/capitalise';
 
 class StudentList extends React.Component {
   state = { students: [], isLoading: true };
@@ -11,18 +13,21 @@ class StudentList extends React.Component {
   }
 
   render() {
-      if (this.isLoading) {
-        console.log("loading")
-        return <h2>Loading...</h2>;  
+    if (this.state.isLoading) {
+      console.log('loading');
+      return <h2>Loading...</h2>;
     }
     return (
-      <div>
-        <h1>Student List</h1>
-        <ul className='student-list' >
+      <div className="list-container">
+        <h2>Student List</h2>
+        <ul className="student-list">
+          <h3>Displaying {this.state.students.length} Students</h3>
           {this.state.students.map((student) => {
             return (
-                <li key={student._id}>
-                <h4>{student.name}</h4>
+              <li key={student._id}>
+                <Link to={`/students/${student._id}`}>
+                  <h4>{capitalise(student.name)}</h4>
+                </Link>
                 Starting Cohort : {student.startingCohort} <br></br>Current
                 Block : {student.currentBlock}
               </li>
