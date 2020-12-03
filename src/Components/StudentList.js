@@ -22,6 +22,9 @@ class StudentList extends React.Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
+    //console.log(this.props.location.state.deleted)
+    if (this.props.location.state.deleted) <h2>Successfully Deleted</h2>
+    
     const { filter } = this.state;
     if (filter || filter !== prevState.filter) {
       api.getStudentsByBlock(filter).then((students) => {

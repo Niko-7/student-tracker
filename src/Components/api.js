@@ -25,9 +25,16 @@ export const getStudent = (studentId) => {
 };
 
 export const postStudent = (student) => {
-  console.log(student);
   return axios
     .post('https://nc-student-tracker.herokuapp.com/api/students', student)
+    .then((res) => {
+      return res.data;
+    });
+};
+
+export const deleteStudent = (studentId) => {
+  return axios
+    .delete(`https://nc-student-tracker.herokuapp.com/api/students/${studentId}`)
     .then((res) => {
       return res.data;
     });

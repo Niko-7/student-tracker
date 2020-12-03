@@ -12,9 +12,9 @@ function App() {
       <Header />
       <Nav />
       <Router>
-        <StudentList path="/students" />
-        <StudentInfo path="/students/:student_id" />
-        <AddStudent path="/students/add_student"/>
+        <StudentList path='/students' />
+        <StudentInfo path='/students/:student_id' />
+        <AddStudent path='/students/add_student' />
       </Router>
     </div>
   );
