@@ -8,6 +8,14 @@ export const getStudents = () => {
     });
 };
 
+export const getStudentsByBlock = (block) => {
+  return axios
+    .get(`https://nc-student-tracker.herokuapp.com/api/students?block=${block}`)
+    .then((res) => {
+      return res.data.students;
+    });
+};
+
 export const getStudent = (studentId) => {
   return axios
     .get(`https://nc-student-tracker.herokuapp.com/api/students/${studentId}`)
@@ -17,7 +25,7 @@ export const getStudent = (studentId) => {
 };
 
 export const postStudent = (student) => {
-  console.log(student)
+  console.log(student);
   return axios
     .post('https://nc-student-tracker.herokuapp.com/api/students', student)
     .then((res) => {

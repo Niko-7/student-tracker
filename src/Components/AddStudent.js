@@ -9,30 +9,29 @@ class AddStudent extends Component {
     this.setState({
       student: {
         ...this.state.student,
-        [event.target.name]: event.target.value,
-      },
+        [event.target.name]: event.target.value
+      }
     });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
     api.postStudent(this.state.student).then((res) => {
-        
-        navigate(`/students/${res.student._id}`);
+      navigate(`/students/${res.student._id}`, { state: { added: true } });
     });
   };
 
   render() {
     return (
-      <form className='add_student' onSubmit={this.handleSubmit}>
-        <div className='form_wrap'>
+      <form className="add_student" onSubmit={this.handleSubmit}>
+        <div className="form_wrap">
           <h3>Add Student</h3>
           <label>
             Student Name:
             <input
-              type='text'
-              name='name'
-              id='name'
+              type="text"
+              name="name"
+              id="name"
               value={this.state.student.name}
               onChange={this.handleChange}
               required
@@ -42,16 +41,16 @@ class AddStudent extends Component {
           <label>
             Starting Cohort:
             <input
-              type='text'
-              name='startingCohort'
-              id='startingCohort'
+              type="text"
+              name="startingCohort"
+              id="startingCohort"
               value={this.state.student.startingCohort}
               onChange={this.handleChange}
               required
             ></input>
           </label>
           <br></br>
-          <button type='submit'>Submit</button>
+          <button type="submit">Submit</button>
         </div>
       </form>
     );

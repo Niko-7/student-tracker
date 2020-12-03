@@ -1,11 +1,15 @@
 import React from 'react';
 import * as api from './api';
-import { Router , Link } from '@reach/router';
-import { capitalise } from '../utils/capitalise';
-import AddStudent from "./AddStudent"
+import { Link } from '@reach/router';
+import StudentCard from './StudentCard';
+import ListFilter from './ListFilter';
 
 class StudentList extends React.Component {
-  state = { students: [], isLoading: true };
+  state = {
+    students: [],
+    isLoading: true,
+    filter: null
+  };
 
   componentDidMount() {
     api.getStudents().then((students) => {
@@ -13,36 +17,38 @@ class StudentList extends React.Component {
     });
   }
 
+  filterChange = (filter) => {
+    this.setState({ filter });
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    const { filter } = this.state;
+    if (filter || filter !== prevState.filter) {
+      api.getStudentsByBlock(filter).then((students) => {
+        this.setState({ students, isLoading: false });
+      });
+    }
+  }
+
   render() {
     if (this.state.isLoading) {
-      console.log('loading');
       return <h2>Loading...</h2>;
     }
     return (
-     
-      <div className='list-container'>
-        {/* <Router><AddStudent path="/add_student" /></Router> */}
-          <Link to='/students/add_student'>
-            <button>Add Student</button>
-          </Link>
-        
+      <div className="list-container">
+        <ListFilter filterChange={this.filterChange} />
+        <Link to="/students/add_student">
+          <button>Add Student</button>
+        </Link>
+
         <h2>Student List</h2>
-        <ul className='student-list'>
+        <ul className="student-list">
           <h3>Displaying {this.state.students.length} Students</h3>
           {this.state.students.map((student) => {
-            return (
-              <li key={student._id}>
-                <Link to={`/students/${student._id}`}>
-                  <h4>{capitalise(student.name)}</h4>
-                </Link>
-                Starting Cohort : {student.startingCohort} <br></br>Current
-                Block : {student.currentBlock}
-              </li>
-            );
+            return <StudentCard key={student._id} {...student} />;
           })}
         </ul>
-        </div>
-      
+      </div>
     );
   }
 }

@@ -3,7 +3,7 @@ import { capitalise } from '../utils/capitalise';
 import * as api from './api';
 
 class StudentInfo extends Component {
-  state = { student: {}, isLoading: true, added: false};
+  state = { student: {}, isLoading: true, added: false };
 
   componentDidMount() {
     api.getStudent(this.props.student_id).then((student) => {
@@ -12,6 +12,8 @@ class StudentInfo extends Component {
   }
 
   render() {
+    console.log(this.props);
+    const { added } = this.props.location.state;
     const { isLoading } = this.state;
     if (isLoading) {
       return <h2>Loading student info...</h2>;
@@ -32,6 +34,7 @@ class StudentInfo extends Component {
             );
           })}
         </ul>
+        {added ? <p className="just-added">Student added to system!</p> : null}
       </div>
     );
   }
