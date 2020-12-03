@@ -4,6 +4,7 @@ import Nav from './Components/Nav';
 import StudentList from './Components/StudentList';
 import { Router } from '@reach/router';
 import StudentInfo from './Components/StudentInfo';
+import AddStudent from "./Components/AddStudent"
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Router>
         <StudentList path="/students" />
         <StudentInfo path="/students/:student_id" />
+        <AddStudent path="/students/add_student"/>
       </Router>
     </div>
   );

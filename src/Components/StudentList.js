@@ -1,7 +1,8 @@
 import React from 'react';
 import * as api from './api';
-import { Link } from '@reach/router';
+import { Router , Link } from '@reach/router';
 import { capitalise } from '../utils/capitalise';
+import AddStudent from "./AddStudent"
 
 class StudentList extends React.Component {
   state = { students: [], isLoading: true };
@@ -18,9 +19,15 @@ class StudentList extends React.Component {
       return <h2>Loading...</h2>;
     }
     return (
-      <div className="list-container">
+     
+      <div className='list-container'>
+        {/* <Router><AddStudent path="/add_student" /></Router> */}
+          <Link to='/students/add_student'>
+            <button>Add Student</button>
+          </Link>
+        
         <h2>Student List</h2>
-        <ul className="student-list">
+        <ul className='student-list'>
           <h3>Displaying {this.state.students.length} Students</h3>
           {this.state.students.map((student) => {
             return (
@@ -34,7 +41,8 @@ class StudentList extends React.Component {
             );
           })}
         </ul>
-      </div>
+        </div>
+      
     );
   }
 }

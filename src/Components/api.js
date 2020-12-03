@@ -15,3 +15,12 @@ export const getStudent = (studentId) => {
       return res.data.student;
     });
 };
+
+export const postStudent = (student) => {
+  console.log(student)
+  return axios
+    .post('https://nc-student-tracker.herokuapp.com/api/students', student)
+    .then((res) => {
+      return res.data;
+    });
+};
