@@ -99,3 +99,18 @@ h2 {
 .filter_students #block {
   margin: 10px;
 }
+
+.grad_buttons {
+  display: flex;
+  margin: 0 auto;
+}
+
+.stud_graduated {
+  text-align: center;
+  color: green;
+}
+
+.stud_repeated {
+  text-align: center;
+  color: red;
+}

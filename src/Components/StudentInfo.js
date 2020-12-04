@@ -22,7 +22,7 @@ class StudentInfo extends Component {
   };
 
   render() {
-    let count = 2;
+    let count = 1;
     let previousSlug = '';
 
     const { added } = this.props.location.state;
@@ -31,26 +31,33 @@ class StudentInfo extends Component {
       return <h2>Loading student info...</h2>;
     }
     const {
-      student: { name, startingCohort, blockHistory },
+      student: { name, startingCohort, blockHistory }
     } = this.state;
     return (
-      <div className='list-container'>
+      <div className="list-container">
         <h2>{capitalise(name)}</h2>
         <p>Starting Cohort: {startingCohort}</p>
         <ul>
           {blockHistory.map((item) => {
+            previousSlug = item.slug;
+            count++;
+            if (previousSlug !== item.slug) count = 1;
+            if (count > 1 && previousSlug === item.slug) {
+              return (
+                <li key={item.slug + count}>
+                  {item.number} - {item.name}
+                </li>
+              );
+            }
             return (
-              <li key={item.slug === previousSlug ? item.slug + count : item.slug}>
+              <li key={item.slug}>
                 {item.number} - {item.name}
-                {(this.previousSlug = item.slug)}
               </li>
             );
           })}
         </ul>
         <button onClick={this.deleteStudent}>Delete Student</button>
-        {added ? <p className='just-added'>Student added to system!</p> : null}
-        
-        
+        {added ? <p className="just-added">Student added to system!</p> : null}
       </div>
     );
   }

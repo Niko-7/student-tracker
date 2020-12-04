@@ -2,10 +2,14 @@ import React from 'react';
 
 class ListFilter extends React.Component {
   handleChange = (event) => {
-    this.props.filterChange(event.target.value);
+    if (event.target.value === 'All') {
+      this.props.filterChange('');
+    } else {
+      this.props.filterChange(event.target.value);
+    }
   };
 
-  blocks = ['', 'fun', 'be', 'fe', 'proj', 'grad'];
+  blocks = ['All', 'fun', 'be', 'fe', 'proj', 'grad'];
   render() {
     return (
       <div className="filter_students">
