@@ -39,3 +39,11 @@ export const deleteStudent = (studentId) => {
       return res.data;
     });
 };
+
+export const gradStudent = (studentId, progress) => {
+  return axios
+    .patch(`https://nc-student-tracker.herokuapp.com/api/students/${studentId}?progress=${progress}`)
+    .then((res) => {
+      return res.data;
+    });
+};

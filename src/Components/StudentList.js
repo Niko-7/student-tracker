@@ -8,7 +8,7 @@ class StudentList extends React.Component {
   state = {
     students: [],
     isLoading: true,
-    filter: null
+    filter: null,
   };
 
   componentDidMount() {
@@ -22,33 +22,42 @@ class StudentList extends React.Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    //console.log(this.props.location.state.deleted)
-    // if (this.props.location.state.deleted) <h2>Successfully Deleted</h2> : null }
-    
     const { filter } = this.state;
-    if (filter || filter !== prevState.filter) {
+    if (filter !== prevState.filter) {
       api.getStudentsByBlock(filter).then((students) => {
         this.setState({ students, isLoading: false });
       });
     }
   }
 
+  gradStudent = (student, progress) => { 
+    api.gradStudent(student, progress).then(data => console.log(data))
+  };
+
   render() {
     if (this.state.isLoading) {
       return <h2>Loading...</h2>;
     }
+    if (this.props.location.state.deleted) return <h2>Successfully Deleted</h2>;
+
     return (
-      <div className="list-container">
+      <div className='list-container'>
         <ListFilter filterChange={this.filterChange} />
-        <Link to="/students/add_student">
+        <Link to='/students/add_student'>
           <button>Add Student</button>
         </Link>
 
         <h2>Student List</h2>
-        <ul className="student-list">
+        <ul className='student-list'>
           <h3>Displaying {this.state.students.length} Students</h3>
           {this.state.students.map((student) => {
-            return <StudentCard key={student._id} {...student} />;
+            return (
+              <StudentCard
+                key={student._id}
+                {...student}
+                gradStudent={this.gradStudent}
+              />
+            );
           })}
         </ul>
       </div>
