@@ -1,6 +1,5 @@
-To be able to view the project in you browser
-Type "npm install" in the terminal 
-and when its done type `npm start`
+To be able to view the project in you browser,\ 
+type "npm install" in the terminal and when its done type `npm start`
 it should run the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
