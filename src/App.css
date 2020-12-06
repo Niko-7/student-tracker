@@ -1,41 +1,66 @@
 body {
-  background-color: rgba(159, 231, 255, 0.698);
+  background-color: #1a1a1d;
+  color: white;
 }
 
 header {
-  background-color: white;
   min-width: 25%;
   max-width: 500px;
   margin: 0 auto;
   font-family: Helvetica, Arial, sans-serif;
   text-align: center;
-  border: 1px solid black;
+  text-decoration: underline;
+  text-decoration-color: #6f2232;
+}
+
+button {
+  text-decoration: none;
+  color: #c3073f;
+  padding: 5px 15px;
+  display: inline-block;
+  position: relative;
+  border: 1px solid #c3073f;
+  border-radius: 4px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+}
+.form_list {
+  text-decoration: none;
+  color: #c3073f;
+  padding: 5px 15px;
+  display: inline-block;
+  position: relative;
+  border: 1px solid #c3073f;
+  border-radius: 4px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
 }
 
 nav {
   text-align: center;
 }
 
-nav button {
-  margin: 0.5em;
+.nav_btn {
+  float: right;
+  font-size: larger;
 }
 
 h2 {
   margin: 0 auto;
   text-align: center;
-  background-color: white;
   min-width: 25%;
   max-width: 500px;
+  border: 3px solid #6f2232;
+}
 
-  border: 1px solid black;
+.list_items {
+  text-align: center;
+  list-style: inside;
+  
 }
 
 .list-container {
-  background-color: white;
-  min-width: 25%;
-  max-width: 500px;
+  text-align: center;
   margin: 0 auto;
-  border: 1px solid black;
+  
 }
 
 .list-container button {
@@ -47,25 +72,24 @@ h2 {
 }
 
 .student-list li {
-  background-color: white;
-  min-width: 25%;
-  max-width: 500px;
-  margin: 0 auto;
-  margin-bottom: 10px;
+  display: inline-grid;
+  text-align: center;
+  min-width: 5%;
+  max-width: 15%;
+  margin: 10px;
   margin-left: 0;
   list-style: none;
-  border: 1px solid black;
+  border: 3px solid #6f2232;
+  width: 50%;
 }
 
 .add_student {
   text-align: center;
-  background-color: white;
   min-width: 25%;
   max-width: 500px;
   margin: 0 auto;
-  margin-bottom: 10px;
   list-style: none;
-  border: 1px solid black;
+  border: 3px solid #6f2232;
 }
 
 .add_student input {
@@ -74,6 +98,7 @@ h2 {
 }
 
 .form_wrap {
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -86,14 +111,21 @@ h2 {
   font-weight: bold;
 }
 
+.inline_alignment {
+  display: inline-block;
+}
+
+.other_case {
+  padding: 0 20px 0 10px;
+}
+
 .filter_students {
   text-align: center;
-  background-color: white;
   min-width: 25%;
   max-width: 500px;
   margin: 0 auto;
   list-style: none;
-  border: 1px solid black;
+  border: 3px solid #6f2232;
 }
 
 .filter_students #block {

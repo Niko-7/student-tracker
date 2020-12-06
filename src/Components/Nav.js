@@ -4,13 +4,12 @@ import { Link } from '@reach/router';
 const Nav = () => {
   return (
     <nav>
-      <Link to="/">
-        <button>Home</button>
+      {/* <Link to='/'>
+        <button className='nav_btn'>Home</button>
+      </Link> */}
+      <Link to='/students'>
+        <button className='nav_btn'>Back to Student List</button>
       </Link>
-      <Link to="/students">
-        <button>Students</button>
-      </Link>
-      <button>Blocks</button>
     </nav>
   );
 };

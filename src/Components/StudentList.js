@@ -30,8 +30,8 @@ class StudentList extends React.Component {
     }
   }
 
-  gradStudent = (student, progress) => { 
-    api.gradStudent(student, progress).then(data => console.log(data))
+  gradStudent = (student, progress) => {
+    api.gradStudent(student, progress).then((data) => console.log(data));
   };
 
   render() {
@@ -42,14 +42,17 @@ class StudentList extends React.Component {
 
     return (
       <div className='list-container'>
-        <ListFilter filterChange={this.filterChange} />
-        <Link to='/students/add_student'>
-          <button>Add Student</button>
-        </Link>
+        {/* <h2>Student List</h2> */}
 
-        <h2>Student List</h2>
         <ul className='student-list'>
-          <h3>Displaying {this.state.students.length} Students</h3>
+          <h3>Currently Displaying {this.state.students.length} Students...</h3>
+          <div className='filter_students'>
+            <ListFilter filterChange={this.filterChange} />
+            <p className='inline_alignment other_case'> or </p>
+            <Link to='/students/add_student' className='inline_alignment'>
+              <button>Add A Student</button>
+            </Link>
+          </div>
           {this.state.students.map((student) => {
             return (
               <StudentCard

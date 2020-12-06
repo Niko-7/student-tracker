@@ -12,12 +12,15 @@ class ListFilter extends React.Component {
   blocks = ['All', 'fun', 'be', 'fe', 'proj', 'grad'];
   render() {
     return (
-      <div className="filter_students">
-        <h2>Filter by</h2>
+      <div className="inline_alignment">
         <form>
           <label>
-            Block
-            <select id="block" onChange={this.handleChange}>
+            Filter by: Block
+            <select
+              id='block'
+              onChange={this.handleChange}
+              className='form_list'
+            >
               {this.blocks.map((block) => {
                 return (
                   <option key={block} value={block}>

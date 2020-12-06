@@ -9,12 +9,12 @@ import AddStudent from "./Components/AddStudent"
 function App() {
   return (
     <div>
-      <Header />
       <Nav />
+      <Header />
       <Router>
         <StudentList path='/students' />
-        <StudentInfo path='/students/:student_id' />
         <AddStudent path='/students/add_student' />
+        <StudentInfo path='/students/:student_id' />
       </Router>
     </div>
   );

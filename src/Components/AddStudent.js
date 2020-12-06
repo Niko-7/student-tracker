@@ -26,7 +26,7 @@ class AddStudent extends Component {
     return (
       <form className='add_student' onSubmit={this.handleSubmit}>
         <div className='form_wrap'>
-          <h3>Add Student</h3>
+          <h3>Add A Student</h3>
           <label>
             Student Name:
             <input
@@ -51,7 +51,7 @@ class AddStudent extends Component {
             ></input>
           </label>
           <br></br>
-          <button type='submit'>Submit</button>
+          <button type='submit' className="form_btn">Submit</button>
         </div>
       </form>
     );

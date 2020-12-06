@@ -37,7 +37,7 @@ class StudentInfo extends Component {
       <div className="list-container">
         <h2>{capitalise(name)}</h2>
         <p>Starting Cohort: {startingCohort}</p>
-        <ul>
+        <ul className="list_items">
           {blockHistory.map((item) => {
             previousSlug = item.slug;
             count++;
